@@ -34,7 +34,4 @@ The ability to generate virtual environments is crucial for applications ranging
 
 Please follow the [INSTALL.md](INSTALL.md) to set up your conda environment and download pre-trained weights.
 
-> **Personal note:** I had to use Python 3.10 (not 3.11+) to get the CUDA extensions to compile cleanly on my machine. If you run into build errors, try downgrading your Python version first.
-
-## Demo
-Lyra supports both images and videos as input. Below are examples of running Lyra on sing
+> **Personal note:** I had to use Python 3.10 (not 3.11+) to get the CUDA extensions to compile correctly. Also make sure your CUDA toolkit version matches the one PyTorch was built with — mismatches caused silent errors for me.
