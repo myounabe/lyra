@@ -35,6 +35,5 @@ The ability to generate virtual environments is crucial for applications ranging
 Please follow the [INSTALL.md](INSTALL.md) to set up your conda environment and download pre-trained weights.
 
 > **Personal notes:**
-> - I had to use Python 3.10 (not 3.11+) to get the CUDA extensions to compile correctly.
-> - On my RTX 3090, I also needed to set `TORCH_CUDA_ARCH_LIST="8.6"` before running the install script, otherwise the build would fail silently.
-> - If you're on a machine without internet access during install, pre-download the HuggingFace weights manually and point `HF_HOME` to your local cache directory.
+> - I had to use Python 3.10 (not 3.11+) to get the CUDA extensions to compile successfully. If you hit errors during `pip install -e .`, try creating a fresh conda env with `python=3.10` first.
+> - Tested on Ubuntu 22.04 with CUDA 11.8 and an RTX 3090. Works well for single-image inference out of the box.
