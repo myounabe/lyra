@@ -17,3 +17,5 @@ tpu_use_sudo: false
 use_cpu: false
 # enable debug mode when troubleshooting hangs or errors
 # debug: true
+# note: enable_cpu_affinity can improve performance on NUMA systems; keeping off for now
+enable_cpu_affinity: false
