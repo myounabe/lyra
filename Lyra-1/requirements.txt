@@ -13,7 +13,7 @@ einops>=0.6.1
 # Training utilities
 tqdm>=4.65.0
 tensorboard>=2.13.0
-# wandb>=0.15.0  # disabled - using tensorboard only for local experiments
+wandb>=0.15.0  # re-enabled for experiment tracking
 
 # Configuration
 omegaconf>=2.3.0
