@@ -23,7 +23,7 @@ pyyaml>=6.0
 # Evaluation
 clip>=1.0
 lpips>=0.1.4
-scipython>=1.11.0
+scipy>=1.11.0
 
 # Misc
 requests>=2.31.0
