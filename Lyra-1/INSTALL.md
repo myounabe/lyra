@@ -12,6 +12,7 @@ conda activate lyra
 # Install the dependencies.
 pip install -r requirements_gen3c.txt
 pip install -r requirements_lyra.txt
+# NOTE: If the ln -sf commands below fail silently, try running the above pip installs again first.
 # Patch Transformer engine linking issues in conda environments.
 ln -sf $CONDA_PREFIX/lib/python3.10/site-packages/nvidia/*/include/* $CONDA_PREFIX/include/
 ln -sf $CONDA_PREFIX/lib/python3.10/site-packages/nvidia/*/include/* $CONDA_PREFIX/include/python3.10
@@ -21,12 +22,10 @@ pip install transformer-engine[pytorch]==1.12.0
 git clone https://github.com/NVIDIA/apex
 CUDA_HOME=$CONDA_PREFIX pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./apex
 # Install MoGe for inference.
-pip install git+https://github.com/microsoft/MoGe.git
-# Install Mamba for reconstruction model.
-pip install --no-build-isolation "git+https://github.com/state-spaces/mamba@v2.2.4"
-```
-
-You can test the environment setup forCUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) python scripts/test_environment.py
+pip install git+.
+pip install --no-buildYou can test the environment setup for with:
+```bash
+CUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) python scripts/test_environment.py
 ```
 
  **Note (personal):** On my machine the `ln -sf` glob commands occasionally fail silently if the nvidia packages aren't fully installed yet. Running `pip install -r requirements_lyra.txt` a second time before those lines resolved it.
@@ -58,12 +57,4 @@ checkpoints/
 └── Cosmos-Tokenize1-DV4x8x8-360p
 ```
 
-Under the checkpoint repository `checkpoints/<model-name>`, we provide the encoder, decoder, the full autoencoder in TorchScript (PyTorch JIT mode) and the native PyTorch checkpoints. For instance for `Cosmos-Tokenize1-CV8x8x8-720p` model:
-```bash
-├── checkpoints/
-│   ├── Cosmos-Tokenize1-CV8x8x8-720p/
-│   │   ├── encoder.jit
-│   │   ├── decoder.jit
-│   │   ├── autoencoder.jit
-│   │   ├── model.pt
-```
+Under the checkpoint repository `checkpoints/<model-name>`, we provide the encoder, decoder, the full autoencoder in TorchScript (PyTorch JIT mode) and the native PyTorch checkpoints. For insta
