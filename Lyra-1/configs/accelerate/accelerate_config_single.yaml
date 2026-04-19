@@ -15,3 +15,4 @@ tpu_env: []
 tpu_use_cluster: false
 tpu_use_sudo: false
 use_cpu: false
+# Personal note: using GPU 0 on my local RTX 3090 setup
