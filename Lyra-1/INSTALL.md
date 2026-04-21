@@ -30,6 +30,8 @@ CUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) python scripts/test_environment.py
 
  **Note (personal):** On my machine the `ln -sf` glob commands occasionally fail silently if the nvidia packages aren't fully installed yet. Running `pip install -r requirements_lyra.txt` a second time before those lines resolved it.
 
+ **Note (personal):** When building Apex, the compilation can take 20–30 minutes on my machine. Adding `-j$(nproc)` to the pip install command did not help here since it's controlled by the build backend, but making sure no other GPU processes are running during the build seemed to reduce occasional CUDA OOM errors mid-compile.
+
 ### Download Cosmos-Predict1 tokenizer
 
 1. Generate a [Hugging Face](https://huggingface.co/settings/tokens) access token (if you haven't done so already). Set the access token to `Read` permission (default is `Fine-grained`).
